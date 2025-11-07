@@ -5,11 +5,15 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 import com.example.praktikum5.R
 
 @Composable
@@ -26,6 +30,13 @@ fun HalamanBeranda(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceAround
     ) {
+        // Teks Selamat Datang
+        Text(
+            text = stringResource(id = R.string.selamat_datang),
+            fontSize = 40.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color(0xFF3F3A53)
+        )
 
     }
 }

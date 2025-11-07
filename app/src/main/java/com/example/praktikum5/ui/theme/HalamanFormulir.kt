@@ -244,7 +244,6 @@ fun HalamanFormulir(
                             .height(50.dp),
                         enabled = textNama.isNotEmpty() && textJK.isNotEmpty() &&
                                 textStatus.isNotEmpty() && textAlamat.isNotEmpty(),
-                        // --- REVISI: onClick diubah ---
                         onClick = {
                             // 1. Simpan data ke state
                             nama = textNama

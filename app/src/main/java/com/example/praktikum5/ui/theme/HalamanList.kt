@@ -3,11 +3,15 @@ package com.example.praktikum5.ui.theme
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Text
@@ -74,6 +78,46 @@ fun HalamanList(
                     DataPesertaItem(label = stringResource(R.string.jenis_kelamin), isi = "Perempuan")
                     DataPesertaItem(label = stringResource(R.string.status_perkawinan), isi = "Lajang")
                     DataPesertaItem(label = stringResource(R.string.alamat), isi = "Yogyakarta")
+                }
+                // Tombol Navigasi
+                Column(
+                    modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
+                ) {
+                    // Tombol Beranda
+                    Button(
+                        onClick = onBerandaClicked,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(50.dp),
+                        colors = ButtonDefaults.buttonColors(containerColor = purpleButton), // Merujuk ke Color.kt
+                        shape = RoundedCornerShape(25.dp)
+                    ) {
+                        Text(
+                            text = stringResource(R.string.beranda),
+                            color = Color.White,
+                            fontSize = 16.sp
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_small)))
+
+                    // Tombol Formulir Pendaftaran
+                    Button(
+                        onClick = onFormulirClicked,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(50.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = Color.LightGray
+                        ),
+                        shape = RoundedCornerShape(25.dp)
+                    ) {
+                        Text(
+                            text = stringResource(R.string.form_pendaftaran),
+                            color = Color.Black,
+                            fontSize = 16.sp
+                        )
+                    }
                 }
             }
         }

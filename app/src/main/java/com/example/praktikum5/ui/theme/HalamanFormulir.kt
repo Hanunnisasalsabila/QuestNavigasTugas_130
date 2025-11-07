@@ -15,6 +15,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CardDefaults
@@ -38,16 +39,22 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.praktikum5.R
 
-
 @Composable
 fun HalamanFormulir(
     onFormSubmitClicked: () -> Unit,
     modifier: Modifier = Modifier
 ){
+    // State untuk input
     var textNama by remember { mutableStateOf("") }
     var textAlamat by remember { mutableStateOf("") }
     var textJK by remember { mutableStateOf("") }
     var textStatus by remember { mutableStateOf("") }
+
+    var nama by remember { mutableStateOf("") }
+    var alamat by remember { mutableStateOf("") }
+    var jenis by remember { mutableStateOf("") }
+    var status by remember { mutableStateOf("") }
+    var showDialog by remember { mutableStateOf(false) }
 
     // List pilihan
     val gender: List<String> = listOf("Laki-laki", "Perempuan")
@@ -61,6 +68,47 @@ fun HalamanFormulir(
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+
+        // Logika AlertDialog
+        if (showDialog) {
+            AlertDialog(
+                onDismissRequest = {
+                    showDialog = false
+                    // Reset form saat dialog ditutup
+                    textNama = ""
+                    textJK = ""
+                    textStatus = ""
+                    textAlamat = ""
+                },
+                title = { Text(text = stringResource(R.string.data_terkirim), fontWeight = FontWeight.Bold) },
+                text = {
+                    // Tampilkan data di dalam dialog
+                    Column {
+                        Text(text = "Nama   : $nama")
+                        Text(text = "Gender : $jenis")
+                        Text(text = "Status : $status")
+                        Text(text = "Alamat : $alamat")
+                    }
+                },
+                confirmButton = {
+                    Button(
+                        onClick = {
+                            showDialog = false
+                            // Reset form saat tombol OK diklik
+                            textNama = ""
+                            textJK = ""
+                            textStatus = ""
+                            textAlamat = ""
+
+                            // Pindah halaman SETELAH klik OK
+                            onFormSubmitClicked()
+                        }
+                    ) {
+                        Text("OK")
+                    }
+                }
+            )
+        }
         // Kartu untuk membungkus form
         ElevatedCard(
             elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
@@ -187,6 +235,7 @@ fun HalamanFormulir(
                             }
                         )
                     }
+
                     // Button Submit
                     Button(
                         modifier = Modifier

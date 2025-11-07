@@ -1,5 +1,23 @@
 <resources>
+    <!-- String dari Formulir -->
     <string name="app_name">Praktikum5</string>
     <string name="submit">Submit</string>
-    <string name="back">Back</string>
+
+    <!-- String Halaman Beranda -->
+    <string name="selamat_datang">Selamat Datang</string>
+    <string name="nim_nama">Pascal Pahlevi Pasha - 20250140001</string>
+
+    <!-- String Halaman List -->
+    <string name="list_peserta">List Daftar Peserta</string>
+    <string name="beranda">Beranda</string>
+    <string name="form_pendaftaran">Formulir Pendaftaran</string>
+    <string name="nama_lengkap">NAMA LENGKAP</string>
+    <string name="jenis_kelamin">JENIS KELAMIN</string>
+    <string name="status_perkawinan">STATUS PERKAWINAN</string>
+    <string name="alamat">ALAMAT</string>
+
+    <!-- String baru untuk Halaman Formulir -->
+    <string name="nama_lengkap_form">Nama Lengkap</string>
+    <string name="data_terkirim">Data Terkirim</string>
+
 </resources>

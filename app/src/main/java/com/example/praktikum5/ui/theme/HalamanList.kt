@@ -64,7 +64,45 @@ fun HalamanList(
                         modifier = Modifier.padding(vertical = dimensionResource(R.dimen.padding_medium))
                     )
                 }
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(dimensionResource(R.dimen.padding_small))
+                        .weight(1f)
+                ) {
+                    DataPesertaItem(label = stringResource(R.string.nama_lengkap), isi = "Hanun Nisa Salsabila")
+                    DataPesertaItem(label = stringResource(R.string.jenis_kelamin), isi = "Perempuan")
+                    DataPesertaItem(label = stringResource(R.string.status_perkawinan), isi = "Lajang")
+                    DataPesertaItem(label = stringResource(R.string.alamat), isi = "Yogyakarta")
+                }
             }
+        }
+    }
+}
+
+@Composable
+fun DataPesertaItem(label: String, isi: String) {
+    ElevatedCard(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 4.dp),
+        shape = RoundedCornerShape(8.dp),
+        colors = CardDefaults.cardColors(containerColor = Color(0xFFF0E8F9))
+    ) {
+        Column(
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
+        ) {
+            Text(
+                text = label,
+                fontSize = 14.sp,
+                color = Color.Gray
+            )
+            Text(
+                text = isi,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Medium,
+                color = Color.Black
+            )
         }
     }
 }

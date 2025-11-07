@@ -56,7 +56,7 @@ fun HalamanBeranda(
                 painter = painterResource(id = R.drawable.logo_placeholder),
                 contentDescription = "Logo",
                 // Ukuran logo
-                modifier = Modifier.size(400.dp)
+                modifier = Modifier.size(500.dp)
             )
         }
 
@@ -64,13 +64,13 @@ fun HalamanBeranda(
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(
                 text = "Hanun Nisa Salsabila",
-                fontSize = 20.sp,
+                fontSize = 23.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.DarkGray
             )
             Text(
                 text = "20230140130",
-                fontSize = 18.sp,
+                fontSize = 20.sp,
                 color = Color.DarkGray
             )
         }

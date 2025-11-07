@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 
 // Enum untuk menentukan rute navigasi
@@ -30,7 +31,29 @@ fun PendaftaranApp(
             startDestination = Halaman.Beranda.name, // Mulai dari Halaman Beranda
             modifier = Modifier.padding(innerPadding)
         ) {
+            // Rute untuk Halaman Beranda (Screen 1)
+            composable(route = Halaman.Beranda.name) {
+                HalamanBeranda(
+                    onNextButtonClicked = {
+                        // Navigasi ke Halaman List
+                        navController.navigate(Halaman.List.name)
+                    }
+                )
+            }
 
+            // Rute untuk Halaman List (Screen 2)
+            composable(route = Halaman.List.name) {
+                HalamanList(
+                    onBerandaClicked = {
+                        // Kembali ke Halaman Beranda
+                        navController.popBackStack(Halaman.Beranda.name, inclusive = false)
+                    },
+                    onFormulirClicked = {
+                        // Navigasi ke Halaman Formulir
+                        navController.navigate(Halaman.Formulir.name)
+                    }
+                )
+            }
         }
     }
 }

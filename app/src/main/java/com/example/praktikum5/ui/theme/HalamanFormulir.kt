@@ -15,6 +15,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
@@ -35,6 +37,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.praktikum5.R
+
 
 @Composable
 fun HalamanFormulir(
@@ -182,6 +185,39 @@ fun HalamanFormulir(
                             onValueChange = {
                                 textAlamat = it
                             }
+                        )
+                    }
+                    // Button Submit
+                    Button(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 24.dp)
+                            .height(50.dp),
+                        enabled = textNama.isNotEmpty() && textJK.isNotEmpty() &&
+                                textStatus.isNotEmpty() && textAlamat.isNotEmpty(),
+                        // --- REVISI: onClick diubah ---
+                        onClick = {
+                            // 1. Simpan data ke state
+                            nama = textNama
+                            jenis = textJK
+                            status = textStatus
+                            alamat = textAlamat
+                            // 2. Tampilkan pop-up
+                            showDialog = true
+                            // 3. Hapus navigasi langsung
+                            // onFormSubmitClicked()
+                        },
+                        shape = RoundedCornerShape(25.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = purpleButton, // di ambil dari Color.kt
+                            disabledContainerColor = purpleButton.copy(alpha = 0.5f)
+                        )
+                    ) {
+                        Text(
+                            text = stringResource(R.string.submit),
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.White
                         )
                     }
                 }

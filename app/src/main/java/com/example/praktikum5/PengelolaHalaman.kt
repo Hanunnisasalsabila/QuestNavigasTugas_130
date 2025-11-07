@@ -54,6 +54,16 @@ fun PendaftaranApp(
                     }
                 )
             }
+
+            // Rute untuk Halaman Formulir (Screen 3)
+            composable(route = Halaman.Formulir.name) {
+                HalamanFormulir(
+                    onFormSubmitClicked = {
+                        // Kembali ke Halaman List setelah submit
+                        navController.popBackStack(Halaman.List.name, inclusive = false)
+                    }
+                )
+            }
         }
     }
 }
